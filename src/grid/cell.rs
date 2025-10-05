@@ -6,6 +6,7 @@ use bevy_math::{DVec3, IVec3};
 use bevy_platform::time::Instant;
 use bevy_reflect::prelude::*;
 use bevy_transform::prelude::*;
+use serde::{Deserialize, Serialize};
 
 /// The coordinate of the cell this entity is located in, within its parent's [`Grid`]. The
 /// [`Transform`] of an entity with this component is relative to the center of this cell.
@@ -23,6 +24,7 @@ use bevy_transform::prelude::*;
 #[derive(Component, Default, Debug, PartialEq, Eq, Clone, Copy, Hash, Reflect)]
 #[reflect(Component, Default, PartialEq)]
 #[require(Transform, GlobalTransform)]
+#[derive(Serialize, Deserialize)]
 pub struct CellCoord {
     /// The x-index of the cell.
     pub x: GridPrecision,
